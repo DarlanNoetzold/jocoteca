@@ -1,10 +1,10 @@
 import MySQLdb
 print('Conectando...')
-conn = MySQLdb.connect(user='root', passwd='root', host='localhost', port=3306)
+conn = MySQLdb.connect(user='root', passwd='admin', host='localhost', port=3306)
 
 # Descomente se quiser desfazer o banco...
-conn.cursor().execute("DROP DATABASE `jogoteca`;")
-conn.commit()
+#conn.cursor().execute("DROP DATABASE `jogoteca`;")
+#conn.commit()
 
 criar_tabelas = '''SET NAMES utf8;
     CREATE DATABASE `jogoteca` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
@@ -44,12 +44,12 @@ for user in cursor.fetchall():
 cursor.executemany(
       'INSERT INTO jogoteca.jogo (nome, categoria, console) VALUES (%s, %s, %s)',
       [
-            ('God of War 4', 'Acao', 'PS4'),
+            ('God of War 4', 'Ação', 'PS4'),
             ('NBA 2k18', 'Esporte', 'Xbox One'),
             ('Rayman Legends', 'Indie', 'PS4'),
             ('Super Mario RPG', 'RPG', 'SNES'),
             ('Super Mario Kart', 'Corrida', 'SNES'),
-            ('Fire Emblem Echoes', 'Estrategia', '3DS'),
+            ('Fire Emblem Echoes', 'Estratégia', '3DS'),
       ])
 
 cursor.execute('select * from jogoteca.jogo')
